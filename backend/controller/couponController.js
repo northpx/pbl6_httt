@@ -49,4 +49,4 @@ const getCouponByName = asyncHandler(async (req, res)=>{
     }
 })
 
-module.exports = {createCoupon, getAllCouponFromShop, deleteCoupon, getCouponByName}
+module.exports = {createCoupon, getAllCouponFromShop, deleteCoupon, getCouponByName, createCoupon}
