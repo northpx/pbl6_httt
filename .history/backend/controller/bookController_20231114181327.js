@@ -5,12 +5,12 @@ const asyncHandler = require('express-async-handler');
 
 const createBook = asyncHandler(async (req, res) => {
   const title = req.body.title;
-  const findBook = await Book.findOne({ title:  title});
+  const findBook = await User.findOne({ title:  title});
   if (!findBook) {
-    const newBook = await Book.create(req.body);
-    res.json(newBook);
+    const newUser = await Book.create(req.body);
+    res.json(newUser);
   } else {
-    throw new Error('Book Already Exists!');
+    throw new Error('User Already Exists!');
   }
 });
 
@@ -225,5 +225,4 @@ module.exports = {
   getCategories,
   getBookDiscounted,
   getBookSold,
-  createBook
 };

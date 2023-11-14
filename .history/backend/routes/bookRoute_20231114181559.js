@@ -9,14 +9,13 @@ const {
   updateBook,
   getBookDiscounted,
   getBookSold,
-  createBook,
 } = require('../controller/bookController');
 const { isAuth } = require('../utils/isAuth');
 const { isShop } = require('../utils/isShop');
 const router = express.Router();
 
 
-router.post('/create-book', createBook)
+router.post('/create-book', is)
 router.get('/', getAllBooks);
 router.get('/with-discount', getBookDiscounted);
 router.get('/with-sold', getBookSold);

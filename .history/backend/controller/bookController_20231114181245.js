@@ -3,16 +3,7 @@ const Shop = require('../model/Shop');
 const ShopBook = require('../model/ShopBook');
 const asyncHandler = require('express-async-handler');
 
-const createBook = asyncHandler(async (req, res) => {
-  const title = req.body.title;
-  const findBook = await Book.findOne({ title:  title});
-  if (!findBook) {
-    const newBook = await Book.create(req.body);
-    res.json(newBook);
-  } else {
-    throw new Error('Book Already Exists!');
-  }
-});
+const createBook = asyncHandler(async (re))
 
 const getAllBooks = async (req, res) => {
   const books = await ShopBook.find().populate('shop').populate('book');
@@ -225,5 +216,4 @@ module.exports = {
   getCategories,
   getBookDiscounted,
   getBookSold,
-  createBook
 };

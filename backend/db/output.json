@@ -1,0 +1,794 @@
+[
+  {
+    "title": "One Hundred Years of Solitude",
+    "image": "images/one-hundred-years-of-solitude.jpg",
+    "categories": [
+      "Magical Realism",
+      "Family Saga"
+    ],
+    "description": "A landmark in literature, the novel tells the multi-generational story of the Buend\u00c3\u00ada family in the fictional town of Macondo.",
+    "author": "Gabriel Garc\u00c3\u00ada M\u00c3\u00a1rquez",
+    "publisher": "Harper & Row"
+  },
+  {
+    "title": "Sons and Lovers",
+    "image": "images/sons-and-lovers.jpg",
+    "categories": [
+      "Fiction",
+      "Coming of Age"
+    ],
+    "description": "The novel explores the complex relationships in the life of the Morel family, focusing on the emotional struggles of Paul Morel.",
+    "author": "D. H. Lawrence",
+    "publisher": "Gerald Duckworth & Company"
+  },
+  {
+    "title": "Independent People",
+    "image": "images/independent-people.jpg",
+    "categories": [
+      "Fiction",
+      "Historical Fiction"
+    ],
+    "description": "The story follows Bjartur of Summerhouses, a sheep farmer determined to achieve independence in early 20th-century Iceland.",
+    "author": "Halld\u00c3\u00b3r Laxness",
+    "publisher": "N/A"
+  },
+  {
+    "title": "Poems",
+    "image": "images/poems-giacomo-leopardi.jpg",
+    "categories": [
+      "Poetry",
+      "Classic Literature"
+    ],
+    "description": "A collection of poems by Giacomo Leopardi, showcasing the beauty of Italian literature and lyricism.",
+    "author": "Giacomo Leopardi",
+    "publisher": "N/A"
+  },
+  {
+    "title": "The Golden Notebook",
+    "image": "images/the-golden-notebook.jpg",
+    "categories": [
+      "Fiction",
+      "Feminist Literature"
+    ],
+    "description": "Doris Lessing's groundbreaking novel explores the life and thoughts of a woman in post-World War II Britain.",
+    "author": "Doris Lessing",
+    "publisher": "N/A"
+  },
+  {
+    "title": "Pippi Longstocking",
+    "image": "images/pippi-longstocking.jpg",
+    "categories": [
+      "Children's Literature",
+      "Adventure"
+    ],
+    "description": "A classic children's book featuring the adventures of the unconventional and strong-willed Pippi Longstocking.",
+    "author": "Astrid Lindgren",
+    "publisher": "Rab\u00c3\u00a9n & Sj\u00c3\u00b6gren"
+  },
+  {
+    "title": "Diary of a Madman",
+    "image": "images/diary-of-a-madman.jpg",
+    "categories": [
+      "Short Stories",
+      "Psychological Fiction"
+    ],
+    "description": "Lu Xun's influential short story explores themes of individualism and sanity in early 20th-century China.",
+    "author": "Lu Xun",
+    "publisher": "N/A"
+  },
+  {
+    "title": "Children of Gebelawi",
+    "image": "images/children-of-gebelawi.jpg",
+    "categories": [
+      "Fiction",
+      "Philosophical Novel"
+    ],
+    "description": "Naguib Mahfouz's novel is a philosophical exploration of good and evil, set in an allegorical city.",
+    "author": "Naguib Mahfouz",
+    "publisher": "N/A"
+  },
+  {
+    "title": "Buddenbrooks",
+    "image": "images/buddenbrooks.jpg",
+    "categories": [
+      "Fiction",
+      "Family Drama"
+    ],
+    "description": "Thomas Mann's novel follows the decline of a wealthy merchant family over several generations.",
+    "author": "Thomas Mann",
+    "publisher": "S. Fischer Verlag"
+  },
+  {
+    "title": "The Magic Mountain",
+    "image": "images/the-magic-mountain.jpg",
+    "categories": [
+      "Fiction",
+      "Philosophical Novel"
+    ],
+    "description": "Thomas Mann's novel is set in a Swiss sanatorium and explores themes of time, illness, and human nature.",
+    "author": "Thomas Mann",
+    "publisher": "S. Fischer Verlag"
+  },
+  {
+    "title": "Moby Dick",
+    "image": "images/moby-dick.jpg",
+    "categories": [
+      "Fiction",
+      "Adventure"
+    ],
+    "description": "Herman Melville's classic novel follows Captain Ahab's obsessive quest for the white whale, Moby Dick.",
+    "author": "Herman Melville",
+    "publisher": "Harper & Brothers"
+  },
+  {
+    "title": "Essays",
+    "image": "images/essais.jpg",
+    "categories": [
+      "Non-Fiction",
+      "Philosophy"
+    ],
+    "description": "Michel de Montaigne's collection of essays delves into various topics, showcasing his wit and wisdom.",
+    "author": "Michel de Montaigne",
+    "publisher": "N/A"
+  },
+  {
+    "title": "History",
+    "image": "images/history.jpg",
+    "categories": [
+      "Historical Fiction",
+      "Epic"
+    ],
+    "description": "Elsa Morante's novel spans the history of Italy, exploring the impact of war on individuals and families.",
+    "author": "Elsa Morante",
+    "publisher": "N/A"
+  },
+  {
+    "title": "Beloved",
+    "image": "images/beloved.jpg",
+    "categories": [
+      "Historical Fiction",
+      "Magical Realism"
+    ],
+    "description": "Toni Morrison's powerful novel tells the story of Sethe, an escaped slave haunted by her past.",
+    "author": "Toni Morrison",
+    "publisher": "Alfred A. Knopf"
+  },
+  {
+    "title": "The Tale of Genji",
+    "image": "images/the-tale-of-genji.jpg",
+    "categories": [
+      "Classic Literature",
+      "Romance"
+    ],
+    "description": "Murasaki Shikibu's masterpiece is considered the world's first novel, portraying the life and loves of Prince Genji.",
+    "author": "Murasaki Shikibu",
+    "publisher": "N/A"
+  },
+  {
+    "title": "The Man Without Qualities",
+    "image": "images/the-man-without-qualities.jpg",
+    "categories": [
+      "Philosophical Novel",
+      "Satire"
+    ],
+    "description": "Robert Musil's unfinished novel explores the complexities of human existence in the early 20th century.",
+    "author": "Robert Musil",
+    "publisher": "N/A"
+  },
+  {
+    "title": "Lolita",
+    "image": "images/lolita.jpg",
+    "categories": [
+      "Fiction",
+      "Controversial"
+    ],
+    "description": "Vladimir Nabokov's controversial novel tells the story of Humbert Humbert's obsession with the young Dolores Haze.",
+    "author": "Vladimir Nabokov",
+    "publisher": "Olympia Press"
+  },
+  {
+    "title": "Nineteen Eighty-Four",
+    "image": "images/nineteen-eighty-four.jpg",
+    "categories": [
+      "Dystopian",
+      "Political Fiction"
+    ],
+    "description": "George Orwell's dystopian novel explores a totalitarian society under the rule of Big Brother.",
+    "author": "George Orwell",
+    "publisher": "Secker & Warburg"
+  },
+  {
+    "title": "Metamorphoses",
+    "image": "images/the-metamorphoses-of-ovid.jpg",
+    "categories": [
+      "Mythology",
+      "Poetry"
+    ],
+    "description": "Ovid's epic poem explores the transformations of gods, heroes, and mythical creatures in Roman mythology.",
+    "author": "Ovid",
+    "publisher": "N/A"
+  },
+  {
+    "title": "The Book of Disquiet",
+    "image": "images/the-book-of-disquiet.jpg",
+    "categories": [
+      "Philosophical",
+      "Autobiographical Fiction"
+    ],
+    "description": "Fernando Pessoa's work is a fragmentary collection of thoughts and reflections on life and existence.",
+    "author": "Fernando Pessoa",
+    "publisher": "N/A"
+  },
+  {
+    "title": "Tales",
+    "image": "images/tales-and-poems-of-edgar-allan-poe.jpg",
+    "categories": [
+      "Short Stories",
+      "Gothic Fiction"
+    ],
+    "description": "Edgar Allan Poe's collection of tales and poems includes some of the most famous works in American literature.",
+    "author": "Edgar Allan Poe",
+    "publisher": "N/A"
+  },
+  {
+    "title": "In Search of Lost Time",
+    "image": "images/a-la-recherche-du-temps-perdu.jpg",
+    "categories": [
+      "Modernist Literature",
+      "Autobiographical Fiction"
+    ],
+    "description": "Marcel Proust's monumental work explores memory, time, and the intricacies of human experience.",
+    "author": "Marcel Proust",
+    "publisher": "N/A"
+  },
+  {
+    "title": "Gargantua and Pantagruel",
+    "image": "images/gargantua-and-pantagruel.jpg",
+    "categories": [
+      "Satirical Fiction",
+      "Epic"
+    ],
+    "description": "Fran\u00c3\u00a7ois Rabelais's comic and satirical masterpiece follows the adventures of two giants, Gargantua and Pantagruel.",
+    "author": "Fran\u00c3\u00a7ois Rabelais",
+    "publisher": "N/A"
+  },
+  {
+    "title": "Pedro P\u00c3\u00a1ramo",
+    "image": "images/pedro-paramo.jpg",
+    "categories": [
+      "Magical Realism",
+      "Mexican Literature"
+    ],
+    "description": "Juan Rulfo's novel tells the haunting story of Pedro P\u00c3\u00a1ramo, a man searching for his father in a ghostly town.",
+    "author": "Juan Rulfo",
+    "publisher": "Fondo de Cultura Econ\u00c3\u00b3mica"
+  },
+  {
+    "title": "The Masnavi",
+    "image": "images/the-masnavi.jpg",
+    "categories": [
+      "Sufi Poetry",
+      "Philosophical"
+    ],
+    "description": "Rumi's Masnavi is a masterpiece of Sufi literature, offering spiritual teachings and poetic insights.",
+    "author": "Rumi",
+    "publisher": "N/A"
+  },
+  {
+    "title": "Midnight's Children",
+    "image": "images/midnights-children.jpg",
+    "categories": [
+      "Magical Realism",
+      "Historical Fiction"
+    ],
+    "description": "Salman Rushdie's novel follows the lives of children born at the exact moment of India's independence.",
+    "author": "Salman Rushdie",
+    "publisher": "Jonathan Cape"
+  },
+  {
+    "title": "Bostan",
+    "image": "images/bostan.jpg",
+    "categories": [
+      "Persian Literature",
+      "Poetry"
+    ],
+    "description": "Saadi's Bostan is a collection of poetry and prose, offering moral and practical wisdom.",
+    "author": "Saadi",
+    "publisher": "N/A"
+  },
+  {
+    "title": "Season of Migration to the North",
+    "image": "images/season-of-migration-to-the-north.jpg",
+    "categories": [
+      "Postcolonial Literature",
+      "Psychological Fiction"
+    ],
+    "description": "Tayeb Salih's novel explores the complexities of identity and colonialism in Sudan.",
+    "author": "Tayeb Salih",
+    "publisher": "Heinemann Educational Books"
+  },
+  {
+    "title": "Blindness",
+    "image": "images/blindness.jpg",
+    "categories": [
+      "Dystopian Fiction",
+      "Psychological Thriller"
+    ],
+    "description": "Jos\u00c3\u00a9 Saramago's novel depicts a society struck by sudden blindness and the struggle for survival.",
+    "author": "Jos\u00c3\u00a9 Saramago",
+    "publisher": "Camargo & Guimar\u00c3\u00a3es"
+  },
+  {
+    "title": "Hamlet",
+    "image": "images/hamlet.jpg",
+    "categories": [
+      "Tragedy",
+      "Classic Literature"
+    ],
+    "description": "William Shakespeare's iconic play explores themes of revenge, madness, and existentialism.",
+    "author": "William Shakespeare",
+    "publisher": "N/A"
+  },
+  {
+    "title": "King Lear",
+    "image": "images/king-lear.jpg",
+    "categories": [
+      "Tragedy",
+      "Drama"
+    ],
+    "description": "William Shakespeare's tragedy tells the story of an aging king and the consequences of his decisions.",
+    "author": "William Shakespeare",
+    "publisher": "N/A"
+  },
+  {
+    "title": "Othello",
+    "image": "images/othello.jpg",
+    "categories": [
+      "Tragedy",
+      "Drama"
+    ],
+    "description": "William Shakespeare's tragedy explores themes of jealousy, betrayal, and the destructive power of suspicion.",
+    "author": "William Shakespeare",
+    "publisher": "N/A"
+  },
+  {
+    "title": "Oedipus the King",
+    "image": "images/oedipus-the-king.jpg",
+    "categories": [
+      "Tragedy",
+      "Greek Literature"
+    ],
+    "description": "Sophocles' classic play delves into the tragic tale of Oedipus and the prophecy that haunts his life.",
+    "author": "Sophocles",
+    "publisher": "N/A"
+  },
+  {
+    "title": "The Red and the Black",
+    "image": "images/le-rouge-et-le-noir.jpg",
+    "categories": [
+      "Historical Fiction",
+      "Psychological Novel"
+    ],
+    "description": "Stendhal's novel follows the ambitious Julien Sorel as he navigates love, politics, and social climbing.",
+    "author": "Stendhal",
+    "publisher": "N/A"
+  },
+  {
+    "title": "The Life and Opinions of Tristram Shandy",
+    "image": "images/the-life-and-opinions-of-tristram-shandy.jpg",
+    "categories": [
+      "Satirical Fiction",
+      "Metafiction"
+    ],
+    "description": "Laurence Sterne's groundbreaking work is a satirical and experimental exploration of the life of Tristram Shandy.",
+    "author": "Laurence Sterne",
+    "publisher": "N/A"
+  },
+  {
+    "title": "Confessions of Zeno",
+    "image": "images/confessions-of-zeno.jpg",
+    "categories": [
+      "Psychological Fiction",
+      "Italian Literature"
+    ],
+    "description": "Italo Svevo's novel is a psychological exploration of Zeno Cosini's life, vices, and self-reflection.",
+    "author": "Italo Svevo",
+    "publisher": "N/A"
+  },
+  {
+    "title": "Gulliver's Travels",
+    "image": "images/gullivers-travels.jpg",
+    "categories": [
+      "Satirical Fiction",
+      "Adventure"
+    ],
+    "description": "Jonathan Swift's satirical masterpiece takes readers on fantastical journeys through imaginary lands and societies.",
+    "author": "Jonathan Swift",
+    "publisher": "N/A"
+  },
+  {
+    "title": "War and Peace",
+    "image": "images/war-and-peace.jpg",
+    "categories": [
+      "Historical Fiction",
+      "Epic Novel"
+    ],
+    "description": "Leo Tolstoy's epic novel chronicles the lives of several aristocratic families during the Napoleonic Wars.",
+    "author": "Leo Tolstoy",
+    "publisher": "N/A"
+  },
+  {
+    "title": "Anna Karenina",
+    "image": "images/anna-karenina.jpg",
+    "categories": [
+      "Realist Fiction",
+      "Romantic Novel"
+    ],
+    "description": "Leo Tolstoy's classic explores the consequences of societal expectations and the pursuit of true love.",
+    "author": "Leo Tolstoy",
+    "publisher": "N/A"
+  },
+  {
+    "title": "The Death of Ivan Ilyich",
+    "image": "images/the-death-of-ivan-ilyich.jpg",
+    "categories": [
+      "Philosophical Fiction",
+      "Russian Literature"
+    ],
+    "description": "Leo Tolstoy's novella examines the life and death of Ivan Ilyich Golovin and reflects on the nature of existence.",
+    "author": "Leo Tolstoy",
+    "publisher": "N/A"
+  },
+  {
+    "title": "The Adventures of Huckleberry Finn",
+    "image": "images/the-adventures-of-huckleberry-finn.jpg",
+    "categories": [
+      "Adventure",
+      "Satirical Fiction"
+    ],
+    "description": "Mark Twain's novel follows Huck Finn and Jim as they embark on a journey down the Mississippi River.",
+    "author": "Mark Twain",
+    "publisher": "N/A"
+  },
+  {
+    "title": "Ramayana",
+    "image": "images/ramayana.jpg",
+    "categories": [
+      "Epic",
+      "Sanskrit Literature"
+    ],
+    "description": "Valmiki's ancient epic narrates the story of Prince Rama, his wife Sita, and the battle against the demon king Ravana.",
+    "author": "Valmiki",
+    "publisher": "N/A"
+  },
+  {
+    "title": "The Aeneid",
+    "image": "images/the-aeneid.jpg",
+    "categories": [
+      "Epic",
+      "Classical Latin Literature"
+    ],
+    "description": "Virgil's epic poem tells the legendary tale of Aeneas, a Trojan hero, and his journey to fulfill destiny in Italy.",
+    "author": "Virgil",
+    "publisher": "N/A"
+  },
+  {
+    "title": "Mahabharata",
+    "image": "images/the-mahab-harata.jpg",
+    "categories": [
+      "Epic",
+      "Sanskrit Literature"
+    ],
+    "description": "Vyasa's epic narrates the Kurukshetra War and includes the Bhagavad Gita, exploring duty, righteousness, and dharma.",
+    "author": "Vyasa",
+    "publisher": "N/A"
+  },
+  {
+    "title": "Leaves of Grass",
+    "image": "images/leaves-of-grass.jpg",
+    "categories": [
+      "Poetry",
+      "American Literature"
+    ],
+    "description": "Walt Whitman's collection of poems celebrates nature, the human spirit, and the diversity of American life.",
+    "author": "Walt Whitman",
+    "publisher": "N/A"
+  },
+  {
+    "title": "Mrs Dalloway",
+    "image": "images/mrs-dalloway.jpg",
+    "categories": [
+      "Modernist Literature",
+      "Stream of Consciousness"
+    ],
+    "description": "Virginia Woolf's novel follows Clarissa Dalloway through a single day in post-World War I London.",
+    "author": "Virginia Woolf",
+    "publisher": "N/A"
+  },
+  {
+    "title": "To the Lighthouse",
+    "image": "images/to-the-lighthouse.jpg",
+    "categories": [
+      "Modernist Literature",
+      "Psychological Fiction"
+    ],
+    "description": "Virginia Woolf's novel explores the Ramsay family's relationships and emotions during visits to the Isle of Skye.",
+    "author": "Virginia Woolf",
+    "publisher": "N/A"
+  },
+  {
+    "title": "Memoirs of Hadrian",
+    "image": "images/memoirs-of-hadrian.jpg",
+    "categories": [
+      "Historical Fiction",
+      "Biographical Novel"
+    ],
+    "description": "Marguerite Yourcenar's novel is a fictionalized autobiography of Roman Emperor Hadrian reflecting on his life and rule.",
+    "author": "Marguerite Yourcenar",
+    "publisher": "N/A"
+  },
+  {
+    "title": "Crime and Punishment",
+    "image": "images/crime-and-punishment.jpg",
+    "categories": [
+      "Psychological Fiction",
+      "Philosophical Novel"
+    ],
+    "description": "Fyodor Dostoevsky's novel delves into the psychological and moral consequences of Raskolnikov's crime in St. Petersburg.",
+    "author": "Fyodor Dostoevsky",
+    "publisher": "N/A"
+  },
+  {
+    "title": "The Picture of Dorian Gray",
+    "image": "images/the-picture-of-dorian-gray.jpg",
+    "categories": [
+      "Gothic Fiction",
+      "Philosophical Fiction"
+    ],
+    "description": "Oscar Wilde's novel explores the consequences of hedonism and the pursuit of eternal youth through the portrait of Dorian Gray.",
+    "author": "Oscar Wilde",
+    "publisher": "N/A"
+  },
+  {
+    "title": "Wuthering Heights",
+    "image": "images/wuthering-heights.jpg",
+    "categories": [
+      "Gothic Fiction",
+      "Romantic Novel"
+    ],
+    "description": "Emily Bront\u00c3\u00ab's novel portrays the passionate and destructive love between Heathcliff and Catherine Earnshaw on the Yorkshire moors.",
+    "author": "Emily Bront\u00c3\u00ab",
+    "publisher": "N/A"
+  },
+  {
+    "title": "Pride and Prejudice",
+    "image": "images/pride-and-prejudice.jpg",
+    "categories": [
+      "Classic Literature",
+      "Romance"
+    ],
+    "description": "Jane Austen's classic explores themes of love, class, and morality as Elizabeth Bennet navigates societal expectations and prejudices.",
+    "author": "Jane Austen",
+    "publisher": "N/A"
+  },
+  {
+    "title": "Jane Eyre",
+    "image": "images/jane-eyre.jpg",
+    "categories": [
+      "Gothic Fiction",
+      "Autobiographical Novel"
+    ],
+    "description": "Charlotte Bront\u00c3\u00ab's novel follows the life of the orphan Jane Eyre, her struggles, and her journey to independence and love.",
+    "author": "Charlotte Bront\u00c3\u00ab",
+    "publisher": "N/A"
+  },
+  {
+    "title": "The Great Gatsby",
+    "image": "images/the-great-gatsby.jpg",
+    "categories": [
+      "Modernist Literature",
+      "American Literature"
+    ],
+    "description": "F. Scott Fitzgerald's novel explores the American Dream and the decadence of the Jazz Age through the enigmatic Jay Gatsby.",
+    "author": "F. Scott Fitzgerald",
+    "publisher": "N/A"
+  },
+  {
+    "title": "Brave New World",
+    "image": "images/brave-new-world.jpg",
+    "categories": [
+      "Dystopian Fiction",
+      "Science Fiction"
+    ],
+    "description": "Aldous Huxley's novel depicts a futuristic society where conformity and pleasure are prioritized, challenging the concept of individuality.",
+    "author": "Aldous Huxley",
+    "publisher": "N/A"
+  },
+  {
+    "title": "The Catcher in the Rye",
+    "image": "images/the-catcher-in-the-rye.jpg",
+    "categories": [
+      "Coming-of-Age Fiction",
+      "Realistic Fiction"
+    ],
+    "description": "J.D. Salinger's novel follows the experiences of Holden Caulfield, a disenchanted teenager navigating the challenges of adolescence in New York City.",
+    "author": "J.D. Salinger",
+    "publisher": "N/A"
+  },
+  {
+    "title": "The Brothers Karamazov",
+    "image": "images/the-brothers-karamazov.jpg",
+    "categories": [
+      "Philosophical Fiction",
+      "Russian Literature"
+    ],
+    "description": "Fyodor Dostoevsky's novel explores complex moral and philosophical questions through the relationships and conflicts within the Karamazov family.",
+    "author": "Fyodor Dostoevsky",
+    "publisher": "N/A"
+  },
+  {
+    "title": "Frankenstein",
+    "image": "images/frankenstein.jpg",
+    "categories": [
+      "Gothic Fiction",
+      "Science Fiction"
+    ],
+    "description": "Mary Shelley's novel delves into the consequences of scientific experimentation and the pursuit of knowledge through the creation of the creature by Victor Frankenstein.",
+    "author": "Mary Shelley",
+    "publisher": "N/A"
+  },
+  {
+    "title": "The Canterbury Tales",
+    "image": "images/the-canterbury-tales.jpg",
+    "categories": [
+      "Medieval Literature",
+      "Poetry"
+    ],
+    "description": "Geoffrey Chaucer's collection of stories follows a diverse group of pilgrims traveling to Canterbury, showcasing a cross-section of medieval society.",
+    "author": "Geoffrey Chaucer",
+    "publisher": "N/A"
+  },
+  {
+    "title": "The Old Man and the Sea",
+    "image": "images/the-old-man-and-the-sea.jpg",
+    "categories": [
+      "Novella",
+      "Adventure Fiction"
+    ],
+    "description": "Ernest Hemingway's novella tells the story of an aging Cuban fisherman, Santiago, and his epic struggle with a giant marlin in the Gulf Stream.",
+    "author": "Ernest Hemingway",
+    "publisher": "N/A"
+  },
+  {
+    "title": "To Kill a Mockingbird",
+    "image": "images/to-kill-a-mockingbird.jpg",
+    "categories": [
+      "Southern Gothic",
+      "Legal Drama"
+    ],
+    "description": "Harper Lee's novel addresses racial injustice and moral growth through the eyes of a young girl, Scout Finch, in the American South.",
+    "author": "Harper Lee",
+    "publisher": "N/A"
+  },
+  {
+    "title": "The Odyssey",
+    "image": "images/the-odyssey.jpg",
+    "categories": [
+      "Epic Poetry",
+      "Ancient Greek Literature"
+    ],
+    "description": "Homer's epic poem follows the hero Odysseus on his journey home after the Trojan War, encountering mythical creatures and challenges.",
+    "author": "Homer",
+    "publisher": "N/A"
+  },
+  {
+    "title": "The Divine Comedy",
+    "image": "images/the-divine-comedy.jpg",
+    "categories": [
+      "Epic Poetry",
+      "Allegory"
+    ],
+    "description": "Dante Alighieri's epic poem explores the afterlife journey of the protagonist, Dante, through Hell, Purgatory, and Paradise.",
+    "author": "Dante Alighieri",
+    "publisher": "N/A"
+  },
+  {
+    "title": "The Iliad",
+    "image": "images/the-iliad.jpg",
+    "categories": [
+      "Epic Poetry",
+      "Ancient Greek Literature"
+    ],
+    "description": "Homer's epic focuses on the Trojan War, particularly the hero Achilles, and examines themes of honor, glory, and fate.",
+    "author": "Homer",
+    "publisher": "N/A"
+  },
+  {
+    "title": "The Sound and the Fury",
+    "image": "images/the-sound-and-the-fury.jpg",
+    "categories": [
+      "Modernist Literature",
+      "Southern Gothic"
+    ],
+    "description": "William Faulkner's novel explores the Compson family's decline in the post-Civil War South, employing a stream-of-consciousness narrative.",
+    "author": "William Faulkner",
+    "publisher": "N/A"
+  },
+  {
+    "title": "The Grapes of Wrath",
+    "image": "images/the-grapes-of-wrath.jpg",
+    "categories": [
+      "Social Commentary",
+      "American Literature"
+    ],
+    "description": "John Steinbeck's novel follows the Joad family's journey during the Great Depression, highlighting social and economic injustices.",
+    "author": "John Steinbeck",
+    "publisher": "N/A"
+  },
+  {
+    "title": "The Count of Monte Cristo",
+    "image": "images/the-count-of-monte-cristo.jpg",
+    "categories": [
+      "Adventure Fiction",
+      "Revenge"
+    ],
+    "description": "Alexandre Dumas's adventure novel follows Edmond Dant\u00c3\u00a8s, who seeks revenge against those who wronged him, showcasing themes of justice and forgiveness.",
+    "author": "Alexandre Dumas",
+    "publisher": "N/A"
+  },
+  {
+    "title": "The Hunchback of Notre-Dame",
+    "image": "images/the-hunchback-of-notre-dame.jpg",
+    "categories": [
+      "Gothic Fiction",
+      "Historical Fiction"
+    ],
+    "description": "Victor Hugo's novel tells the tragic tale of Quasimodo, the hunchbacked bell ringer of Notre-Dame Cathedral, against the backdrop of medieval Paris.",
+    "author": "Victor Hugo",
+    "publisher": "N/A"
+  },
+  {
+    "title": "Les Mis\u00c3\u00a9rables",
+    "image": "images/les-miserables.jpg",
+    "categories": [
+      "Historical Fiction",
+      "Social Commentary"
+    ],
+    "description": "Victor Hugo's epic novel follows the lives of several characters, including ex-convict Jean Valjean, against the backdrop of post-revolutionary France.",
+    "author": "Victor Hugo",
+    "publisher": "N/A"
+  },
+  {
+    "title": "The Wind in the Willows",
+    "image": "images/the-wind-in-the-willows.jpg",
+    "categories": [
+      "Children's Literature",
+      "Fantasy"
+    ],
+    "description": "Kenneth Grahame's classic novel follows the adventures of anthropomorphic animals, including Mole and Rat, along the riverbank and in the Wild Wood.",
+    "author": "Kenneth Grahame",
+    "publisher": "N/A"
+  },
+  {
+    "title": "The Three Musketeers",
+    "image": "images/the-three-musketeers.jpg",
+    "categories": [
+      "Historical Adventure",
+      "Swashbuckler"
+    ],
+    "description": "Alexandre Dumas's adventure novel follows the young d'Artagnan and the Three Musketeers\u00e2\u20ac\u201dAthos, Porthos, and Aramis\u00e2\u20ac\u201don their daring escapades in 17th-century France.",
+    "author": "Alexandre Dumas",
+    "publisher": "N/A"
+  },
+  {
+    "title": "Sense and Sensibility",
+    "image": "images/sense-and-sensibility.jpg",
+    "categories": [
+      "Romance",
+      "Regency Fiction"
+    ],
+    "description": "Jane Austen's novel follows the Dashwood sisters, Elinor and Marianne, as they navigate love, societal expectations, and the pursuit of happiness.",
+    "author": "Jane Austen",
+    "publisher": "N/A"
+  }
+]

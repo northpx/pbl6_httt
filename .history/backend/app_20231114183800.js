@@ -29,7 +29,7 @@ app.use("/api/v2/shop", shopRoute);
 app.use("/api/v2/coupon", couponRoute);
 app.use("/api/v2/seed", seedRouter);
 app.use("/api/v2/books", bookRoute);
-app.use("/api/v2/insert", insertRoute);
+app.use("/api/v2/insert", insertData);
 
 app.use(notFound);
 app.use(errorHandler);
