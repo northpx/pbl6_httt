@@ -26,6 +26,36 @@ const getBook = async (req, res) => {
   }
 };
 
+const getBookDiscounted = async (req, res) => {
+  try {
+    const books = await ShopBook.find({ discount: { $gt: 0 } })
+      .sort({
+        discount: -1,
+      })
+      .populate('book')
+      .populate('shop'); // Sort by discount in descending order
+    res.send(books);
+  } catch (error) {
+    console.error('Error fetching products with discount:', error);
+    res.status(500).send('Internal Server Error');
+  }
+};
+
+const getBookSold = async (req, res) => {
+  try {
+    const books = await ShopBook.find({ sold: { $gt: 0 } })
+      .sort({
+        sold: -1,
+      })
+      .populate('book')
+      .populate('shop'); // Sort by discount in descending order
+    res.send(books);
+  } catch (error) {
+    console.error('Error fetching products with discount:', error);
+    res.status(500).send('Internal Server Error');
+  }
+};
+
 const searchBooks = asyncHandler(async (req, res) => {
   const { query } = req;
   const pageSize = query.pageSize || 3;
@@ -182,4 +212,6 @@ module.exports = {
   deleteBook,
   updateBook,
   getCategories,
+  getBookDiscounted,
+  getBookSold,
 };

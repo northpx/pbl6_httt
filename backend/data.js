@@ -31,24 +31,6 @@ const data = {
       role: 'shop',
     },
   ],
-  books: [
-    {
-      title: 'Truyen1',
-      categories: ['truyen_cuoi', 'truyen_tranh'],
-      image: '/images/p1.jpg',
-      description: 'truyen cuoi',
-      author: 'VN',
-      publisher: 'Kim Dong',
-    },
-    {
-      title: 'Truyen2',
-      categories: ['truyen_tt', 'truyen_cuoi'],
-      image: '/images/p2.jpg',
-      description: 'truyen trinh tham',
-      author: 'VN',
-      publisher: 'IPM',
-    },
-  ],
 };
 
 module.exports = data;
