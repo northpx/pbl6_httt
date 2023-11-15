@@ -18,6 +18,7 @@ const Home = () => {
   const [products, setProducts] = useState([]);
   const [discountedProducts, setDiscountedProducts] = useState([]);
   const [soldProducts, setSoldProducts] = useState([]);
+  const [topCategories, setTopCategories] = useState([]);
 
   const responsive = {
     superLargeDesktop: {
@@ -46,6 +47,24 @@ const Home = () => {
         setError('');
         const result = await axios.get('/api/v2/books');
         setProducts(result.data);
+        const allCategories = result.data.flatMap(
+          (bookshop) => bookshop.book.categories
+        );
+
+        const categoryCounts = allCategories.reduce((counts, category) => {
+          counts[category] = (counts[category] || 0) + 1;
+          return counts;
+        }, {});
+        const categoryArray = Object.entries(categoryCounts).map(
+          ([category, count]) => ({
+            category,
+            count,
+          })
+        );
+        const sortedCategories = categoryArray.sort(
+          (a, b) => b.count - a.count
+        );
+        setTopCategories(sortedCategories.slice(0, 8));
         setLoading(false);
       } catch (error) {
         setError(error.message);
@@ -216,64 +235,29 @@ const Home = () => {
         <div className="container-xxl">
           <div className="row">
             <div className="col-12">
-              <div className="categories d-flex justify-content-between flex-wrap align-items-center">
-                <div className="d-flex gap-30 align-items-center">
-                  <div>
-                    <h6>Fiction</h6>
-                    <p>2084 items</p>
-                  </div>
-                  <img src="images/fiction.webp" alt="camera" />
+              {topCategories.length > 0 && (
+                <div className="categories d-flex justify-content-between flex-wrap align-items-center">
+                  {topCategories.map((category, index) => (
+                    <div
+                      key={index}
+                      className="d-flex gap-30 align-items-center"
+                    >
+                      <div>
+                        <h6>{category.category}</h6>
+                        <p>{category.count} items</p>
+                      </div>
+
+                      <img
+                        src={`images/${category.category.replace(
+                          /\s+/g,
+                          '_'
+                        )}.jpg`}
+                        alt={category.category}
+                      />
+                    </div>
+                  ))}
                 </div>
-                <div className="d-flex gap-30 align-items-center">
-                  <div>
-                    <h6>Nonfiction</h6>
-                    <p>2450 items</p>
-                  </div>
-                  <img src="images/nonfiction.webp" alt="camera" />
-                </div>
-                <div className="d-flex gap-30 align-items-center">
-                  <div>
-                    <h6>History</h6>
-                    <p>1036 items</p>
-                  </div>
-                  <img src="images/history.webp" alt="camera" />
-                </div>
-                <div className="d-flex gap-30 align-items-center">
-                  <div>
-                    <h6>Young Adult</h6>
-                    <p>3095 items</p>
-                  </div>
-                  <img src="images/young.webp" alt="camera" />
-                </div>
-                <div className="d-flex gap-30 align-items-center">
-                  <div>
-                    <h6>Art & Design</h6>
-                    <p>930 items</p>
-                  </div>
-                  <img src="images/art.webp" alt="camera" />
-                </div>
-                <div className="d-flex gap-30 align-items-center">
-                  <div>
-                    <h6>cooking</h6>
-                    <p>569 items</p>
-                  </div>
-                  <img src="images/cooking.webp" alt="camera" />
-                </div>
-                <div className="d-flex gap-30 align-items-center">
-                  <div>
-                    <h6>Science</h6>
-                    <p>460 items</p>
-                  </div>
-                  <img src="images/science.webp" alt="camera" />
-                </div>
-                <div className="d-flex gap-30 align-items-center">
-                  <div>
-                    <h6>Romance</h6>
-                    <p>1032 items</p>
-                  </div>
-                  <img src="images/romance.webp" alt="camera" />
-                </div>
-              </div>
+              )}
             </div>
           </div>
         </div>
