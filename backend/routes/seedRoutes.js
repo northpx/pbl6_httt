@@ -33,67 +33,29 @@ seedRouter.get('/', async (req, res) => {
       phoneNumber: '123456',
     },
   ];
+  const createBooks = await Book.find();
   const createShops = await Shop.insertMany(shops);
-  await Book.deleteMany({});
-  const createBooks = await Book.insertMany(data.books);
   await ShopBook.deleteMany({});
-  const shopBookData = [
-    {
-      shop: createShops[0]._id, // Assuming shopDocs[0] corresponds to 'Shop1'
-      book: createBooks[0]._id, // Assuming bookDocs[0] corresponds to 'Truyen1'
-      slug: 'slug1',
-      image: '/images/p1.jpg',
-      price: 20,
-      discount: 0,
-      quantity: 10,
-      reviews: 0,
-      ratings: 0,
-      sold: 0,
-      expiryDiscount: 0,
-    },
-    {
-      shop: createShops[0]._id, // Assuming shopDocs[0] corresponds to 'Shop1'
-      book: createBooks[1]._id, // Assuming bookDocs[0] corresponds to 'Truyen1'
-      slug: 'slug2',
-      image: '/images/p2.jpg',
-      price: 10,
-      discount: 0,
-      quantity: 16,
-      reviews: 0,
-      ratings: 0,
-      sold: 0,
-      expiryDiscount: 0,
-    },
-    {
-      shop: createShops[1]._id, // Assuming shopDocs[0] corresponds to 'Shop1'
-      book: createBooks[0]._id, // Assuming bookDocs[0] corresponds to 'Truyen1'
-      slug: 'slug3',
-      image: '/images/p3.jpg',
-      price: 24,
-      discount: 0,
-      quantity: 13,
-      reviews: 0,
-      ratings: 0,
-      sold: 0,
-      expiryDiscount: 0,
-    },
-    {
-      shop: createShops[1]._id, // Assuming shopDocs[0] corresponds to 'Shop1'
-      book: createBooks[1]._id, // Assuming bookDocs[0] corresponds to 'Truyen1'
-      slug: 'slug4',
-      image: '/images/p4.jpg',
-      price: 30,
-      discount: 0,
-      quantity: 40,
-      reviews: 0,
-      ratings: 0,
-      sold: 0,
-      expiryDiscount: 0,
-    },
-    // Add more shopBook data objects here
-  ];
+  const shopBookData = [];
+  createShops.forEach((shop) => {
+    createBooks.forEach((book) => {
+      shopBookData.push({
+        shop: shop._id,
+        book: book._id,
+        slug: `slug_${shop.name}_${book.title}`, // Adjust the slug creation as needed
+        image: `${book.image}`, // Assuming imageLink is the field in the book data
+        price: 20 /* Set the price based on your logic */,
+        discount: 0 /* Set the discount based on your logic */,
+        quantity: 100 /* Set the quantity based on your logic */,
+        reviews: 0,
+        ratings: 0,
+        sold: 0,
+        expiryDiscount: 0,
+      });
+    });
+  });
   const createShopBooks = await ShopBook.insertMany(shopBookData);
-  res.send({ createShops, createBooks, createShopBooks });
+  res.send({ createShops, createShopBooks });
 });
 
 module.exports = seedRouter;
