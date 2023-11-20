@@ -18,40 +18,10 @@ const ProductCard = (props) => {
   const navigate = useNavigate();
   const { userInfo } = state;
 
-<<<<<<< HEAD
-  return <div className={` ${location.pathname == "/store" ? `gr-${grid}` : "col-3"}`}>
-    <Link to=":id" className="product-card position-relative">
-        <div className="wishlist-icon position-absolute">
-            <Link><img src="images/wish.svg" alt="wishlist" /></Link>
-        </div>
-        <div className="product-imge">
-            <img src="images/feature-1.webp" alt="product image" />
-        </div>
-        <div className="product-details">
-            <h6 className="brand">Tiem Sach Mua Thu</h6>
-            <h5 className="product-title">A Book on Books</h5>
-            <ReactStars count={5} size={24} value="3" edit={false} activeColor="#ffd700"/>
-            <p className="price">$45.0</p>
-        </div>
-        <div className="action-bar position-absolute">
-            <div className='d-flex flex-column'>
-                <Link>
-                    <img src="images/add-cart.svg" alt="addcart" />
-                </Link>
-                <Link>
-                    <img src="images/view.svg" alt="view" />
-                </Link>
-            </div>
-        </div>
-    </Link>
-  </div>
-}
-=======
   const [timeRemaining, setTimeRemaining] = useState(
     calculateTimeRemaining(product.expiryDiscount)
   );
   const [discount, setDiscount] = useState(product.discount);
->>>>>>> 6ffd665050ab29f7892815e6ef4b5a31728d5dc1
 
   useEffect(() => {
     const fetchData = async () => {

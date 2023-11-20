@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-import React, { useState } from 'react'
-=======
 import React, { useEffect, useState } from 'react';
->>>>>>> 6ffd665050ab29f7892815e6ef4b5a31728d5dc1
 import { Link } from 'react-router-dom';
 import Marquee from 'react-fast-marquee';
 import BlogCard from '../components/BlogCard';
@@ -17,9 +13,6 @@ import MessageBox from '../components/MessageBox';
 // import ProductCard from '../components/ProductCard';
 
 const Home = () => {
-<<<<<<< HEAD
-  const {grid, setGrid}=useState(2);
-=======
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   const [products, setProducts] = useState([]);
@@ -118,7 +111,6 @@ const Home = () => {
     fetchData();
   }, []);
 
->>>>>>> 6ffd665050ab29f7892815e6ef4b5a31728d5dc1
   return (
     <>
       <section className="home-wrapper-1 py-5">
