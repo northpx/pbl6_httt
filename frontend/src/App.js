@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
-import Layout from "./components/Layout";
+import Layout from './components/Layout';
 import About from './pages/About';
 import Contact from './pages/Contact';
 import Ourstore from './pages/Ourstore';
@@ -30,8 +30,8 @@ function App() {
             <Route path="reset-password" element={<Resetpassword />} />
             <Route path="wishlist" element={<Wishlist />} />
             <Route path="cart" element={<Cart />} />
-            <Route path="product/:id" element={<Singleproduct />}/>
-            <Route path="checkout" element={<Checkout />}/>
+            <Route path="product/:id" element={<Singleproduct />} />
+            {/* <Route path="checkout" element={<Checkout />}/> */}
           </Route>
         </Routes>
       </BrowserRouter>
