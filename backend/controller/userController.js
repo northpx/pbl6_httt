@@ -192,9 +192,14 @@ const updateCart = asyncHandler(async (req, res) => {
     // If the cart item exists, update the quantity
     cartItem.quantity += quantity;
   }
+  console.log(cartItem);
   // Save the cart item
   await cartItem.save();
-  res.send(cartItem);
+  const cartItems = await CartItem.find({ user: userId }).populate(
+    'book',
+    'title price image'
+  );
+  res.send(cartItems);
 });
 
 module.exports = {
