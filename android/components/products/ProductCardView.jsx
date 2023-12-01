@@ -1,50 +1,27 @@
-import { StyleSheet, Text, TouchableOpacity, View, Image } from 'react-native';
-import React, { useContext, useEffect, useState } from 'react';
+import { Image, Text, TouchableOpacity, View } from 'react-native';
+import React, { useContext, useEffect, useState, memo } from 'react';
 import styles from './productCardView.style';
 import { Store } from '../../Store';
+import { useNavigation } from '@react-navigation/native';
+import axios from 'axios';
+import { Ionicons } from '@expo/vector-icons';
+import { COLORS } from '../../constants';
+import imageMapping from '../ImageMapping';
+import AddToCartAnimation from '../AddToCartAnimation';
 
-const ProductCardView = ({ product, navigation }) => {
+const ProductCardView = memo(({ product }) => {
+  const navigation = useNavigation();
+
   const { state, dispatch: ctxDispatch } = useContext(Store);
-  const { userInfo } = state;
-  const [cartItems, setCartItems] = useState([]);
+  const { userInfo, cartItems } = state;
+
   const [timeRemaining, setTimeRemaining] = useState(
     calculateTimeRemaining(product.expiryDiscount)
   );
   const [discount, setDiscount] = useState(product.discount);
-
-  const imageExists = (path) => {
-    try {
-      // Sử dụng require để kiểm tra xem hình ảnh có tồn tại hay không
-      require('../../assets/' + path);
-      return true;
-    } catch (error) {
-      return false;
-    }
-  };
-
-  const imagePath = imageExists(product.image)
-    ? require(`../../assets/${product.image}`)
-    : require('../../assets/images/notfound.png');
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        let userId;
-        if (userInfo) {
-          userId = userInfo._id;
-          const result = await axios.get(
-            `http://localhost:5000/api/v2/user/${userId}/cart-items`
-          );
-          setCartItems(result.data);
-        } else {
-          // const sessionId = uuidv4();
-          // userId = sessionId;
-        }
-      } catch (error) {}
-    };
-
-    fetchData();
-  }, [userInfo]);
+  const imagePath = imageMapping[product.image];
+  const [isAddingToCart, setIsAddingToCart] = useState(false);
+  const [buttonPosition, setButtonPosition] = useState(null);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -61,38 +38,30 @@ const ProductCardView = ({ product, navigation }) => {
     return () => clearInterval(interval);
   }, [product.expiryDiscount, product.discount]);
 
-  const addToCartHandler = async (item) => {
+  const addToCartHandler = () => {
+    setIsAddingToCart(true);
+
+    // Simulate a delay (replace with your actual asynchronous logic)
+    setTimeout(() => {
+      setIsAddingToCart(false);
+    }, 3000);
+
     if (!userInfo) {
       navigation.navigate('Login');
       return;
     }
+    const newItem = {
+      user: userInfo._id,
+      book: product,
+    };
 
-    const existItem =
-      cartItems.length > 0 ? cartItems.find((x) => x.book === item._id) : null;
+    const existItem = cartItems.find(
+      (item) => item.user === newItem.user && item.book._id === newItem.book._id
+    );
+
     const quantity = existItem ? existItem.quantity + 1 : 1;
 
-    try {
-      const { data } = await axios.get(
-        `http://localhost:5000/api/v2/books/slug/${item.slug}`
-      );
-
-      // Check if the product is in stock
-      if (data.countInStock < quantity) {
-        Alert.alert('Sorry. Product is out of stock');
-        return;
-      }
-
-      const result = await axios.post(
-        'http://localhost:5000/api/v2/user/update-cart',
-        {
-          bookId: item._id,
-          quantity,
-          userId: userInfo._id,
-        }
-      );
-    } catch (error) {
-      console.error('Error adding to cart:', error);
-    }
+    ctxDispatch({ type: 'CART_ADD_ITEM', payload: { ...newItem, quantity } });
   };
 
   function calculateTimeRemaining(expiryDiscount) {
@@ -116,11 +85,18 @@ const ProductCardView = ({ product, navigation }) => {
     };
   }
 
+  const handleLayout = (event) => {
+    const { nativeEvent } = event;
+    setButtonPosition(nativeEvent.layout);
+  };
+
   return (
-    <TouchableOpacity onPress={() => {}}>
+    <TouchableOpacity
+      onPress={() => navigation.navigate('ProductDetails', { product })}
+    >
       <View style={styles.container}>
         <View style={styles.imageContainer}>
-          <Image style={styles.image} source={{ uri: imagePath }} />
+          <Image source={imagePath} alt={product.slug} style={styles.image} />
         </View>
         <View style={styles.details}>
           <Text style={styles.title} numberOfLines={1}>
@@ -140,13 +116,23 @@ const ProductCardView = ({ product, navigation }) => {
                 </Text>
               </>
             ) : (
-              <Text>${product.price}</Text>
+              <Text style={styles.price}>${product.price}</Text>
             )}
           </Text>
         </View>
+        <TouchableOpacity
+          style={styles.addBtn}
+          onPress={() => addToCartHandler()}
+          onLayout={handleLayout}
+        >
+          <Ionicons name="add-circle" size={35} color={COLORS.primary} />
+        </TouchableOpacity>
+      </View>
+      <View style={{ alignSelf: 'flex-end', marginHorizontal: 60 }}>
+        {isAddingToCart && <AddToCartAnimation startLocation={15} />}
       </View>
     </TouchableOpacity>
   );
-};
+});
 
 export default ProductCardView;

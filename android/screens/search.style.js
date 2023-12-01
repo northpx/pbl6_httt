@@ -11,6 +11,7 @@ const styles = StyleSheet.create({
     borderRadius: SIZES.medium,
     marginVertical: SIZES.medium,
     height: 50,
+    marginTop: SIZES.xxLarge,
   },
   searchIcon: {
     marginHorizontal: 10,
@@ -35,6 +36,13 @@ const styles = StyleSheet.create({
     borderRadius: SIZES.medium,
     justifyContent: 'center',
     alignItems: 'center',
+    paddingHorizontal: SIZES.small,
+  },
+  searchImage: {
+    resizeMode: 'contain',
+    width: SIZES.width - 80,
+    height: SIZES.height - 300,
+    opacity: 0.9,
   },
 });
 

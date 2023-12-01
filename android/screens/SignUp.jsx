@@ -11,7 +11,7 @@ import {
   ActivityIndicator,
 } from 'react-native';
 import React, { useContext, useState } from 'react';
-import styles from './login.style';
+import styles from './signUp.style';
 import { COLORS, SIZES } from '../constants';
 import { BackBtn, Button } from '../components';
 import { Store } from '../Store';
@@ -25,23 +25,31 @@ import AwesomeAlert from 'react-native-awesome-alerts';
 import { HOST } from '@env';
 
 const validationSchema = Yup.object().shape({
+  name: Yup.string()
+    .min(2, 'Name must be at least 2 characters')
+    .required('Required'),
   email: Yup.string().email('Invalid email address').required('Required'),
   password: Yup.string()
     .min(6, 'Password must be at least 6 characters')
     .required('Required'),
+
+  repeatPassword: Yup.string()
+    .oneOf([Yup.ref('password'), null], 'Passwords must match')
+    .required('Required'),
+  phoneNumber: Yup.string().matches(/^(0[0-9]{9,10})$/, 'Invalid phone number'),
 });
 
-const Login = ({ navigation }) => {
+const SignUp = ({ navigation }) => {
   const [loading, setLoanding] = useState(false);
-
-  const { state, dispatch: ctxDispatch } = useContext(Store);
-  const { userInfo } = state;
-  const [obsercureText, setObsercureText] = useState(false);
-  const [showAlert, setShowAlert] = useState(false);
   const [arlet, setArlet] = useState({
     title: '',
     message: '',
   });
+  const { state, dispatch: ctxDispatch } = useContext(Store);
+  const { userInfo } = state;
+  const [obsercureText, setObsercureText] = useState(false);
+
+  const [showAlert, setShowAlert] = useState(false);
 
   const showAlertFunction = (title, message) => {
     setArlet({ title: title, message: message });
@@ -64,6 +72,7 @@ const Login = ({ navigation }) => {
       }, {});
     }
   };
+
   return (
     <ScrollView>
       <SafeAreaView style={{ marginHorizontal: 20, marginTop: SIZES.xxLarge }}>
@@ -100,23 +109,28 @@ const Login = ({ navigation }) => {
               try {
                 setLoanding(true);
                 const { data } = await axios.post(
-                  `http://${HOST}:5000/api/v2/user/login`,
-                  {
-                    email: values.email,
-                    password: values.password,
-                    headers: {
-                      'Content-Type': 'application/json',
-                    },
-                  }
+                  `http://${HOST}:5000/api/v2/user/register`,
+                  values.phoneNumber
+                    ? {
+                        name: values.name,
+                        email: values.email,
+                        password: values.password,
+                      }
+                    : {
+                        name: values.name,
+                        email: values.email,
+                        password: values.password,
+                        phoneNumber: values.phoneNumber,
+                      }
                 );
                 ctxDispatch({ type: 'USER_SIGNIN', payload: data });
                 AsyncStorage.setItem('userInfo', JSON.stringify(data));
                 setLoanding(false);
-                navigation.goBack();
+                navigation.navigate('Profile');
               } catch (error) {
                 console.error(error);
                 // You can provide a more user-friendly error message to the user here.
-                showAlertFunction('Error Arlet', getError(error));
+                showAlertFunction('Error', getError(error));
                 setLoanding(false);
               }
             }}
@@ -133,7 +147,40 @@ const Login = ({ navigation }) => {
             }) => (
               <View>
                 <View style={styles.wrapper}>
-                  <Text style={styles.label}>Email</Text>
+                  <Text style={styles.label}>Display Name*</Text>
+                  <View
+                    style={styles.inputWrapper(
+                      touched.name && errors.name
+                        ? COLORS.secondary
+                        : COLORS.offwhite
+                    )}
+                  >
+                    <MaterialCommunityIcons
+                      name="face-man-profile"
+                      size={20}
+                      color={COLORS.gray}
+                      style={styles.iconStyle}
+                    />
+                    <Field name="name">
+                      {({ field }) => (
+                        <TextInput
+                          onFocus={() => setFieldTouched('name')}
+                          onBlur={() => setFieldTouched('name', '')}
+                          autoCapitalize="none"
+                          autoCorrect={false}
+                          placeholder="Enter your full name"
+                          style={{ flex: 1 }}
+                          value={values.name}
+                          onChangeText={handleChange('name')}
+                        />
+                      )}
+                    </Field>
+                  </View>
+
+                  {touched.name && errors.name && (
+                    <Text style={styles.errorMessage}>{errors.name}</Text>
+                  )}
+                  <Text style={styles.label}>Email*</Text>
                   <View
                     style={styles.inputWrapper(
                       touched.email && errors.email
@@ -167,7 +214,7 @@ const Login = ({ navigation }) => {
                     <Text style={styles.errorMessage}>{errors.email}</Text>
                   )}
 
-                  <Text style={styles.label}>Password</Text>
+                  <Text style={styles.label}>Password*</Text>
                   <View
                     style={styles.inputWrapper(
                       touched.password ? COLORS.secondary : COLORS.offwhite
@@ -208,11 +255,89 @@ const Login = ({ navigation }) => {
                   {touched.password && errors.password && (
                     <Text style={styles.errorMessage}>{errors.password}</Text>
                   )}
+
+                  <Text style={styles.label}>Repeat Password*</Text>
+                  <View
+                    style={styles.inputWrapper(
+                      touched.repeatPassword
+                        ? COLORS.secondary
+                        : COLORS.offwhite
+                    )}
+                  >
+                    <MaterialCommunityIcons
+                      name="lock-outline"
+                      size={20}
+                      color={COLORS.gray}
+                      style={styles.iconStyle}
+                    />
+                    <Field name="repeatPassword">
+                      {({ field }) => (
+                        <TextInput
+                          onChangeText={handleChange('repeatPassword')}
+                          onFocus={() => setFieldTouched('repeatPassword')}
+                          onBlur={() => setFieldTouched('repeatPassword', '')}
+                          value={values.repeatPassword}
+                          secureTextEntry={!obsercureText}
+                          placeholder="Enter your password"
+                          style={{ flex: 1 }}
+                          autoCapitalize="none"
+                        />
+                      )}
+                    </Field>
+                    <TouchableOpacity
+                      onPress={() => {
+                        setObsercureText(!obsercureText);
+                      }}
+                    >
+                      <MaterialCommunityIcons
+                        name={obsercureText ? 'eye-outline' : 'eye-off-outline'}
+                        size={18}
+                      />
+                    </TouchableOpacity>
+                  </View>
+
+                  {touched.repeatPassword && errors.repeatPassword && (
+                    <Text style={styles.errorMessage}>
+                      {errors.repeatPassword}
+                    </Text>
+                  )}
+
+                  <Text style={styles.label}>Phone Number</Text>
+                  <View
+                    style={styles.inputWrapper(
+                      touched.phoneNumber ? COLORS.secondary : COLORS.offwhite
+                    )}
+                  >
+                    <MaterialCommunityIcons
+                      name="phone"
+                      size={20}
+                      color={COLORS.gray}
+                      style={styles.iconStyle}
+                    />
+                    <Field name="phoneNumber">
+                      {({ field }) => (
+                        <TextInput
+                          onChangeText={handleChange('phoneNumber')}
+                          onFocus={() => setFieldTouched('phoneNumber')}
+                          onBlur={() => setFieldTouched('phoneNumber', '')}
+                          value={values.phoneNumber}
+                          placeholder="Enter your phone number"
+                          style={{ flex: 1 }}
+                          autoCapitalize="none"
+                        />
+                      )}
+                    </Field>
+                  </View>
+                  {touched.phoneNumber && errors.phoneNumber && (
+                    <Text style={styles.errorMessage}>
+                      {errors.phoneNumber}
+                    </Text>
+                  )}
                 </View>
 
                 <View style={{ marginHorizontal: 20 }}>
                   <Button
-                    title="LOGIN"
+                    title="SIGNUP"
                     onPress={() => {
                       const formErrors = validateForm(values, validationSchema);
 
@@ -232,9 +357,9 @@ const Login = ({ navigation }) => {
                 </View>
                 <Text
                   style={styles.register}
-                  onPress={() => navigation.navigate('SignUp')}
+                  onPress={() => navigation.navigate('Login')}
                 >
-                  Don't have an account? Sign up.
+                  Already have an account? Login.
                 </Text>
               </View>
             )}
@@ -245,4 +370,4 @@ const Login = ({ navigation }) => {
   );
 };
 
-export default Login;
+export default SignUp;

@@ -7,7 +7,7 @@ const styles = StyleSheet.create({
   },
   welcomeTxt: (color, top) => ({
     fontFamily: 'Poppins_700Bold',
-    fontSize: SIZES.xxLarge - 5,
+    fontSize: SIZES.xxLarge - 10,
     marginTop: top,
     color: color,
     marginHorizontal: 12,
@@ -40,11 +40,12 @@ const styles = StyleSheet.create({
   },
   searchBtn: {
     width: '50',
-    backgroundColor: COLORS.primary,
     height: '100%',
+    backgroundColor: COLORS.primary,
     borderRadius: SIZES.medium,
     justifyContent: 'center',
     alignItems: 'center',
+    paddingHorizontal: SIZES.small,
   },
 });
 

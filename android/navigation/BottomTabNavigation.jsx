@@ -17,26 +17,29 @@ const screenOptions = {
     right: 0,
     left: 0,
     elevation: 0,
-    height: 70,
+    height: 60,
+    borderTopLeftRadius: 40,
+    borderTopRightRadius: 40,
+    borderColor: COLORS.primary,
+    borderWidth: 2,
+    borderTopWidth: 2,
   },
 };
 
-const BottomTabNavigation = ({ navigation }) => {
+const BottomTabNavigation = () => {
   return (
     <Tab.Navigator screenOptions={screenOptions}>
       <Tab.Screen
         name="Home"
-        component={() => <Home navigation={navigation} />}
+        component={Home}
         options={{
-          tabBarIcon: ({ focused }) => {
-            return (
-              <Ionicons
-                name={focused ? 'home' : 'home-outline'}
-                size={24}
-                color={focused ? COLORS.primary : COLORS.gray2}
-              />
-            );
-          },
+          tabBarIcon: ({ focused }) => (
+            <Ionicons
+              name={focused ? 'home' : 'home-outline'}
+              size={24}
+              color={focused ? COLORS.primary : COLORS.gray2}
+            />
+          ),
         }}
       />
       <Tab.Screen

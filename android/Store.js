@@ -4,9 +4,9 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 export const Store = createContext();
 
 const initialState = {
-  fullBox: false,
   shippingAddress: {},
   userInfo: null,
+  cartItems: [],
 };
 
 const reducer = (state, action) => {
@@ -18,18 +18,38 @@ const reducer = (state, action) => {
       return {
         ...state,
         userInfo: null,
-        cart: {
-          ...state.cart,
-          shippingAddress: {},
-        },
+        cartItems: [], // Clear cartItems on signout
+        shippingAddress: {},
       };
 
     case 'SAVE_SHIPPING_ADDRESS':
       return {
         ...state,
-        cart: { ...state.cart, shippingAddress: action.payload },
+        shippingAddress: action.payload,
       };
-
+    case 'CART_SET_ITEMS': {
+      return { ...state, cartItems: action.payload };
+    }
+    case 'CART_ADD_ITEM':
+      const newItem = action.payload;
+      const existItemIndex = state.cartItems.findIndex(
+        (item) =>
+          item.book._id === newItem.book._id && item.user === newItem.user
+      );
+      if (existItemIndex !== -1) {
+        const updatedCartItems = [...state.cartItems];
+        updatedCartItems[existItemIndex] = newItem;
+        return { ...state, cartItems: updatedCartItems };
+      } else {
+        return { ...state, cartItems: [...state.cartItems, newItem] };
+      }
+    case 'CART_REMOVE_ITEM':
+      const itemDelete = action.payload;
+      const cartItems = state.cartItems.filter(
+        (item) =>
+          !(item.user === itemDelete.user && item.book._id === itemDelete.book)
+      );
+      return { ...state, cartItems: cartItems };
     default:
       return state;
   }
@@ -45,6 +65,7 @@ export function StoreProvider(props) {
           'shippingAddress'
         );
         const savedUserInfo = await AsyncStorage.getItem('userInfo');
+        const savedCartItems = await AsyncStorage.getItem('cartItems');
 
         dispatch({
           type: 'SAVE_SHIPPING_ADDRESS',
@@ -55,15 +76,26 @@ export function StoreProvider(props) {
           type: 'USER_SIGNIN',
           payload: savedUserInfo ? JSON.parse(savedUserInfo) : null,
         });
+
+        dispatch({
+          type: 'CART_SET_ITEMS',
+          payload: savedCartItems ? JSON.parse(savedCartItems) : [],
+        });
       } catch (error) {
         console.error('Error loading data from AsyncStorage:', error);
       }
     };
 
     fetchData();
-  }, [dispatch]); // Run only once on component mount
+  }, [dispatch]);
 
-  const enhancedDispatch = (action) => {
+  useEffect(() => {
+    if (state.cartItems.lenght > 0) {
+      AsyncStorage.setItem('cartItems', JSON.stringify(state.cartItems));
+    }
+  }, [state.cartItems]);
+
+  const enhancedDispatch = async (action) => {
     // Perform async actions, if needed
     dispatch(action);
 
@@ -75,8 +107,11 @@ export function StoreProvider(props) {
     if (action.type === 'SAVE_SHIPPING_ADDRESS') {
       AsyncStorage.setItem(
         'shippingAddress',
-        JSON.stringify(state.cart.shippingAddress)
+        JSON.stringify(state.shippingAddress)
       );
+    }
+    if (action.type === 'CART_ADD_ITEM') {
+      AsyncStorage.setItem('cartItems', JSON.stringify(state.cartItems));
     }
   };
 
