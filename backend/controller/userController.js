@@ -9,16 +9,24 @@ const Shop = require('../model/Shop');
 const createUser = asyncHandler(async (req, res) => {
   const email = req.body.email;
   const findUser = await User.findOne({ email: email });
+
   if (!findUser) {
     const newUser = await User.create(req.body);
-    res.json(newUser);
+    const data = {
+      _id: newUser?._id,
+      name: newUser?.name,
+      email: newUser?.email,
+      token: generateToken(newUser?._id),
+    };
+    res.json(data);
   } else {
-    throw new Error('User Already Exists!');
+    res.status(401).json({ message: 'User Already Exists!' });
   }
 });
 
 const loginUser = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
+
   // console.log({email, password})
   const findUser = await User.findOne({ email }).select('+password');
   if (findUser && (await findUser.comparePassword(password))) {
@@ -43,13 +51,13 @@ const loginUser = asyncHandler(async (req, res) => {
       token: generateToken(findUser?._id),
     });
   } else {
-    throw new Error('Invalid Credentials');
+    res.status(401).send({ message: 'Invalid email or password' });
   }
 });
 
 const loginAdmin = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
-  // console.log({email, password})
+
   const findAdmin = await User.findOne({ email }).select('+password');
   if (findAdmin.role !== 'admin') throw new Error('Not authorised');
   if (findAdmin && (await findAdmin.comparePassword(password))) {
@@ -173,33 +181,81 @@ const updatePassword = asyncHandler(async (req, res) => {
 
 const getCartItems = async (req, res) => {
   const { userId } = req.params;
-  const cartItems = await CartItem.find({ user: userId }).populate(
-    'book',
-    'title price image'
-  );
-  res.json(cartItems);
+
+  try {
+    const cartItems = await CartItem.find({ user: userId }).populate({
+      path: 'book',
+      populate: [
+        {
+          path: 'shop',
+          model: 'Shop',
+        },
+        {
+          path: 'book',
+          model: 'Book', // Thay 'Book' bằng tên của model "Book" hoặc model tương ứng
+        },
+      ],
+    });
+
+    res.json(cartItems);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Internal Server Error' });
+  }
 };
 const updateCart = asyncHandler(async (req, res) => {
-  const { userId, bookId, quantity } = req.body;
-  let cartItem = await CartItem.findOne({ user: userId, book: bookId });
-  if (!cartItem) {
-    cartItem = new CartItem({
-      user: userId,
-      book: bookId,
-      quantity,
+  try {
+    const { cartItems: newCartItems } = req.body;
+
+    // Kiểm tra và xử lý dữ liệu nhận được từ client
+    if (!Array.isArray(newCartItems)) {
+      throw new Error('Invalid data format');
+    }
+
+    for (const item of newCartItems) {
+      await CartItem.deleteMany({ id: item._id });
+      delete item._id;
+    }
+    await CartItem.insertMany(newCartItems);
+
+    const userId = newCartItems[0].user;
+    const cartItems = await CartItem.find({ user: userId }).populate({
+      path: 'book',
+      populate: [
+        {
+          path: 'shop',
+          model: 'Shop',
+        },
+        {
+          path: 'book',
+          model: 'Book', // Thay 'Book' bằng tên của model "Book" hoặc model tương ứng
+        },
+      ],
     });
-  } else {
-    // If the cart item exists, update the quantity
-    cartItem.quantity += quantity;
+
+    res.send(cartItems);
+  } catch (error) {
+    console.error('Error:', error.message);
+    res.status(400).json({ error: 'Bad Request' });
   }
-  console.log(cartItem);
-  // Save the cart item
-  await cartItem.save();
-  const cartItems = await CartItem.find({ user: userId }).populate(
-    'book',
-    'title price image'
-  );
-  res.send(cartItems);
+});
+
+const deleteCartItem = asyncHandler(async (req, res) => {
+  const id = req.params.id;
+
+  try {
+    let item = await CartItem.findById(id);
+
+    if (item) {
+      await CartItem.deleteOne({ _id: id });
+      res.send({ message: 'Cart Item deleted successfully!' });
+    } else {
+      res.status(404).send({ message: 'Cart Item not found!' });
+    }
+  } catch (error) {
+    console.error('Error:', error);
+    res.status(500).send({ message: 'Internal Server Error' });
+  }
 });
 
 module.exports = {
@@ -215,4 +271,5 @@ module.exports = {
   getAllShop,
   getCartItems,
   updateCart,
+  deleteCartItem,
 };
