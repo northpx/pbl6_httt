@@ -35,7 +35,7 @@ const Cart = () => {
                   </div>
                   <div className='cart-col-3 d-flex align-items-center gap-15'>
                     <div><input className="form-control" type="number" min={1}/></div>
-                    <div><AiFillDelete className='text-danger p-3 bg-secondary'/></div>
+                    <div><AiFillDelete className='text-danger'/></div>
                   </div>
                   <div className='cart-col-4'>0.99$</div>
                 </div>
