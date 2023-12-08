@@ -5,7 +5,7 @@ const asyncHandler = require('express-async-handler');
 
 const createBook = asyncHandler(async (req, res) => {
   const title = req.body.title;
-  const findBook = await Book.findOne({ title:  title});
+  const findBook = await Book.findOne({ title: title });
   if (!findBook) {
     const newBook = await Book.create(req.body);
     res.json(newBook);
@@ -23,6 +23,23 @@ const getBook = async (req, res) => {
   try {
     const { slug } = req.params;
     const book = await ShopBook.findOne({ slug })
+      .populate('shop')
+      .populate('book');
+
+    if (!book) {
+      return res.status(404).send({ message: 'Book not found' });
+    }
+
+    res.send(book);
+  } catch (error) {
+    console.error('Error in getBook:', error);
+    res.status(500).send({ message: 'Internal Server Error' });
+  }
+};
+const getBookById = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const book = await ShopBook.findOne({ id })
       .populate('shop')
       .populate('book');
 
@@ -214,6 +231,45 @@ const getCategories = asyncHandler(async (req, res) => {
     res.status(500).send('Internal Server Error');
   }
 });
+const getProductsByCategories = asyncHandler(async (req, res) => {
+  const { categories } = req.body;
+
+  if (!categories || !Array.isArray(categories) || categories.length === 0) {
+    return res.status(400).json({ error: 'Invalid categories provided' });
+  }
+  const getBookDetails = async (bookId) => {
+    try {
+      const bookDetails = await Book.findById(bookId);
+      return bookDetails;
+    } catch (error) {
+      console.error('Error fetching book details:', error);
+      return null;
+    }
+  };
+  const filteredProducts = [];
+  try {
+    const shopBooks = await ShopBook.find({ book: { $exists: true } }).populate(
+      'book'
+    );
+
+    for (const shopBook of shopBooks) {
+      const bookDetails = await getBookDetails(shopBook.book);
+
+      if (bookDetails) {
+        const hasMatchingCategory = bookDetails.categories.some((category) =>
+          categories.includes(category)
+        );
+
+        if (hasMatchingCategory) {
+          filteredProducts.push(shopBook);
+        }
+      }
+    }
+  } catch (error) {
+    console.error('Error fetching ShopBook:', error);
+  }
+  res.send(filteredProducts);
+});
 
 module.exports = {
   getAllBooks,
@@ -225,5 +281,7 @@ module.exports = {
   getCategories,
   getBookDiscounted,
   getBookSold,
-  createBook
+  createBook,
+  getBookById,
+  getProductsByCategories,
 };

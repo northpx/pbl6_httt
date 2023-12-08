@@ -3,8 +3,12 @@ import { SIZES } from '../../constants';
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: SIZES.medium,
-    marginLeft: 12,
+    alignItems: 'center',
+    paddingTop: SIZES.xxLarge,
+    paddingLeft: SIZES.small / 2,
+  },
+  separator: {
+    height: 16,
   },
 });
 

@@ -2,13 +2,14 @@ import { StyleSheet } from 'react-native';
 import { COLORS, SIZES } from '../constants/index';
 
 const styles = StyleSheet.create({
+  container: { marginBottom: 130 },
   textStyle: {
     fontFamily: 'Poppins_700Bold',
     fontSize: 40,
   },
   appBarWrapper: {
     marginHorizontal: 22,
-    marginTop: SIZES.small,
+    marginTop: SIZES.xxLarge,
   },
   appBar: {
     flexDirection: 'row',
@@ -29,6 +30,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'green',
     justifyContent: 'center',
     alignItems: 'center',
+    zIndex: 999,
   },
   cartNumber: {
     fontFamily: 'Poppins_400Regular',
