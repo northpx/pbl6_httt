@@ -9,7 +9,16 @@ import {
   Orders,
   SignUp,
   Maps,
-  Checkout,
+  PreOrderScreen,
+  PaymentScreen,
+  OrderDetailScreen,
+  Shops,
+  CreateShop,
+  ShopDetailScreen,
+  CreateShopItem,
+  EditShopInfo,
+  Items,
+  UpdateShopItem,
 } from './screens';
 import {
   useFonts,
@@ -99,8 +108,71 @@ export default function App() {
             }}
           />
           <Stack.Screen
-            name="Checkout"
-            component={Checkout}
+            name="PreOrderScreen"
+            component={PreOrderScreen}
+            options={{
+              headerShown: false,
+            }}
+          />
+          <Stack.Screen
+            name="PaymentScreen"
+            component={PaymentScreen}
+            options={{
+              headerShown: false,
+            }}
+          />
+          <Stack.Screen
+            name="OrderDetailScreen"
+            component={OrderDetailScreen}
+            options={{
+              headerShown: false,
+            }}
+          />
+          <Stack.Screen
+            name="Shops"
+            component={Shops}
+            options={{
+              headerShown: false,
+            }}
+          />
+          <Stack.Screen
+            name="CreateShop"
+            component={CreateShop}
+            options={{
+              headerShown: false,
+            }}
+          />
+          <Stack.Screen
+            name="ShopDetailScreen"
+            component={ShopDetailScreen}
+            options={{
+              headerShown: false,
+            }}
+          />
+          <Stack.Screen
+            name="CreateShopItem"
+            component={CreateShopItem}
+            options={{
+              headerShown: false,
+            }}
+          />
+          <Stack.Screen
+            name="EditShopInfo"
+            component={EditShopInfo}
+            options={{
+              headerShown: false,
+            }}
+          />
+          <Stack.Screen
+            name="Items"
+            component={Items}
+            options={{
+              headerShown: false,
+            }}
+          />
+          <Stack.Screen
+            name="UpdateShopItem"
+            component={UpdateShopItem}
             options={{
               headerShown: false,
             }}

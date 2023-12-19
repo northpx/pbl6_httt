@@ -14,8 +14,40 @@ const createBook = asyncHandler(async (req, res) => {
   }
 });
 
+const createShopBook = asyncHandler(async (req, res) => {
+  const slug = req.body.slug;
+  const findBook = await ShopBook.findOne({ slug: slug });
+
+  if (!findBook) {
+    const newBook = await ShopBook.create(req.body);
+    await newBook.save();
+    res.status(201).json(newBook); // Send a 201 Created status code
+  } else {
+    findBook.quantity += req.body.quantity;
+    await findBook.save();
+    res.status(200).json(findBook); // Send a 200 OK status code with the updated book
+  }
+});
+
+const updateShopBook = asyncHandler(async (req, res) => {
+  const { shop, book } = req.body;
+  const updateBookData = { ...req.body };
+
+  const findBook = await ShopBook.findOneAndUpdate(
+    { shop: shop, book: book },
+    updateBookData,
+    { new: true }
+  );
+
+  res.send(findBook);
+});
+
 const getAllBooks = async (req, res) => {
   const books = await ShopBook.find().populate('shop').populate('book');
+  res.send(books);
+};
+const getAllBooksRoot = async (req, res) => {
+  const books = await Book.find({});
   res.send(books);
 };
 
@@ -197,7 +229,9 @@ const getBookByShopId = async (req, res) => {
 };
 
 const deleteBook = asyncHandler(async (req, res) => {
-  const book = await ShopBook.findById(req.params.id);
+  const bookId = req.params.bookId; // Assuming you're using Express.js and have defined the route parameter as :bookId
+  console.log(bookId);
+  const book = await ShopBook.findById(bookId);
   if (book) {
     await book.deleteOne();
     res.send({ message: 'Book Deleted' });
@@ -284,4 +318,7 @@ module.exports = {
   createBook,
   getBookById,
   getProductsByCategories,
+  getAllBooksRoot,
+  createShopBook,
+  updateShopBook,
 };

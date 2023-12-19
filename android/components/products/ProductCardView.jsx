@@ -112,7 +112,9 @@ const ProductCardView = memo(({ product }) => {
                   ${product.price}
                 </Text>{' '}
                 <Text>
-                  <Text style={{ fontWeight: 'bold' }}>${discountedPrice}</Text>
+                  <Text style={{ fontWeight: 'bold' }}>
+                    ${product.price * (1 - product.discount / 100)}
+                  </Text>
                 </Text>
               </>
             ) : (

@@ -27,7 +27,6 @@ const createUser = asyncHandler(async (req, res) => {
 const loginUser = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
 
-  // console.log({email, password})
   const findUser = await User.findOne({ email }).select('+password');
   if (findUser && (await findUser.comparePassword(password))) {
     const refreshToken = await generateRefreshToken(findUser?._id);
@@ -213,7 +212,7 @@ const updateCart = asyncHandler(async (req, res) => {
     }
 
     for (const item of newCartItems) {
-      await CartItem.deleteMany({ id: item._id });
+      await CartItem.deleteMany({ book: item.book, user: item.user });
       delete item._id;
     }
     await CartItem.insertMany(newCartItems);

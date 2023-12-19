@@ -25,7 +25,7 @@ const Home = ({ navigation }) => {
   const [soldProducts, setSoldProducts] = useState([]);
 
   const { state, dispatch: ctxDispatch } = useContext(Store);
-  const { userInfo, cartItems } = state;
+  const { userInfo, cartItems, shippingAddress } = state;
   const [cartNumber, setCartNumber] = useState(0);
 
   useEffect(() => {
@@ -39,6 +39,10 @@ const Home = ({ navigation }) => {
       try {
         let userId;
         if (userInfo && cartItems.length == 0) {
+          ctxDispatch({
+            type: 'CART_CLEAR',
+          });
+
           userId = userInfo._id;
           const result = await axios.get(
             `http://${HOST}:5000/api/v2/user/${userId}/cart-items`,
@@ -48,12 +52,11 @@ const Home = ({ navigation }) => {
               },
             }
           );
-
+          console.log(result.data.length);
           ctxDispatch({
             type: 'CART_SET_ITEMS',
             payload: result.data,
           });
-          AsyncStorage.setItem('cartItems', JSON.stringify(cartItems));
         } else {
           // const sessionId = uuidv4();
           // userId = sessionId;
@@ -68,7 +71,12 @@ const Home = ({ navigation }) => {
       try {
         // Fetch products with a discount greater than 0
         const result = await axios.get(
-          `http://${HOST}:5000/api/v2/books/with-discount`
+          `http://${HOST}:5000/api/v2/books/with-discount`,
+          {
+            headers: {
+              'Content-Type': 'application/json',
+            },
+          }
         );
         setDiscountedProducts(result.data);
       } catch (error) {}
@@ -118,7 +126,9 @@ const Home = ({ navigation }) => {
     <SafeAreaView>
       <View style={styles.appBarWrapper}>
         <View style={styles.appBar}>
-          <Ionicons name="location-outline" size={24} />
+          <TouchableOpacity onPress={() => navigation.navigate('Maps')}>
+            <Ionicons name="location-outline" size={24} />
+          </TouchableOpacity>
           <Text style={styles.location}>Tokyo Japanese</Text>
           <View style={{ alignItems: 'flex-end' }}>
             <View style={styles.cartCount}>

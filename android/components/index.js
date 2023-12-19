@@ -6,6 +6,9 @@ import BackBtn from './BackBtn';
 import Button from './Button';
 import CartCard from './products/CartCard';
 import AddToCartAnimation from './AddToCartAnimation';
+import { Header } from './Header';
+import Address from './order/Address';
+import { PaymentBody } from './payment/paymentBody';
 
 export {
   Welcome,
@@ -16,4 +19,7 @@ export {
   Button,
   CartCard,
   AddToCartAnimation,
+  Header,
+  Address,
+  PaymentBody,
 };

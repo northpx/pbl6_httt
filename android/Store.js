@@ -50,6 +50,8 @@ const reducer = (state, action) => {
           !(item.user === itemDelete.user && item.book._id === itemDelete.book)
       );
       return { ...state, cartItems: cartItems };
+    case 'CART_CLEAR':
+      return { ...state, cartItems: [] };
     default:
       return state;
   }

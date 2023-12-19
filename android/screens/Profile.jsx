@@ -135,7 +135,7 @@ const Profile = ({ navigation }) => {
                     <Text style={styles.menuText}>Cart</Text>
                   </View>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={() => {}}>
+                <TouchableOpacity onPress={() => navigation.navigate('Shops')}>
                   <View style={styles.menuItem(0.2)}>
                     <MaterialCommunityIcons
                       name="store-outline"

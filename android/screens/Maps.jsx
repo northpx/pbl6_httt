@@ -4,10 +4,14 @@ import MapView from 'react-native-maps';
 import { point } from '@turf/helpers';
 import destination from '@turf/destination';
 import * as Location from 'expo-location';
+import axios from 'axios';
+import { Store } from '../Store';
 
 export default class Maps extends React.Component {
+  static contextType = Store;
   constructor(props) {
     super(props);
+
     this.state = {
       elements: [],
       south: null,
@@ -18,6 +22,24 @@ export default class Maps extends React.Component {
       longitude: 139.767125,
     };
   }
+
+  getAdressFromCoordinates = async (lat, lng) => {
+    const apiKey = 'AIzaSyCI4rirT4t2B-eu3WCCbapyVvwes2pHlxg'; // Replace with your API Key
+    const url = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}&key=${apiKey}`;
+
+    try {
+      const response = await axios.get(url);
+      if (response.data.status === 'OK') {
+        return response.data.results[1].formatted_address; // Returns the address components
+      } else {
+        console.error('Geocoding API returned error:', response.data.status);
+        return null;
+      }
+    } catch (error) {
+      console.error('Error fetching address:', error);
+      return null;
+    }
+  };
 
   updateState(location) {
     this.setState({
@@ -61,12 +83,24 @@ export default class Maps extends React.Component {
   };
 
   fetchToilet = async () => {
-    const reverseGeocodeLocation = await Location.reverseGeocodeAsync({
-      latitude: this.state.latitude,
-      longitude: this.state.longitude,
-    });
-
-    console.log(reverseGeocodeLocation);
+    const { latitude, longitude } = this.state;
+    const address = await this.getAdressFromCoordinates(latitude, longitude);
+    const parts = address.split(', ');
+    if (address) {
+      const { state, dispatch } = this.context;
+      const { shippingAddress } = state;
+      const newAddress = {
+        fullName: '',
+        phoneNumber: '',
+        province: parts[3],
+        district: parts[2],
+        commune: parts[0],
+        streetName: parts[0],
+      };
+      dispatch({ type: 'SAVE_SHIPPING_ADDRESS', payload: newAddress });
+      const { navigation } = this.props.route.params;
+      navigation.goBack();
+    }
   };
   render() {
     return (
@@ -83,7 +117,7 @@ export default class Maps extends React.Component {
           }}
         >
           {this.state.elements.map((element) => {
-            let title = '保育園';
+            let title = 'Set address';
             if (element.tags['name'] !== undefined) {
               title = element.tags['name'];
             }
@@ -105,7 +139,7 @@ export default class Maps extends React.Component {
             onPress={() => this.fetchToilet()}
             style={styles.button}
           >
-            <Text style={styles.buttonItem}>保育園取得</Text>
+            <Text style={styles.buttonItem}>Set address</Text>
           </TouchableOpacity>
         </View>
       </View>

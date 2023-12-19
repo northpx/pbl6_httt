@@ -1,14 +1,14 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
 const shopSchema = new mongoose.Schema(
   {
     name: {
       type: String,
-      required: [true, "Please enter your shop name!"],
+      required: [true, 'Please enter your shop name!'],
     },
     email: {
       type: String,
-      required: [true, "Please enter your shop email address"],
+      required: [true, 'Please enter your shop email address'],
     },
     description: {
       type: String,
@@ -17,6 +17,7 @@ const shopSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    user: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
     phoneNumber: {
       type: Number,
       required: true,
@@ -50,7 +51,7 @@ const shopSchema = new mongoose.Schema(
         },
         status: {
           type: String,
-          default: "Processing",
+          default: 'Processing',
         },
         createdAt: {
           type: Date,
@@ -69,4 +70,4 @@ const shopSchema = new mongoose.Schema(
   }
 );
 
-module.exports = mongoose.model("Shop", shopSchema);
+module.exports = mongoose.model('Shop', shopSchema);

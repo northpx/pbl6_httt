@@ -24,6 +24,8 @@ import { getError } from '../utils';
 import AwesomeAlert from 'react-native-awesome-alerts';
 import { HOST } from '@env';
 
+console.log(HOST);
+
 const validationSchema = Yup.object().shape({
   email: Yup.string().email('Invalid email address').required('Required'),
   password: Yup.string()

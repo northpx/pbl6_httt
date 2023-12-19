@@ -12,6 +12,7 @@ const ProductRow = ({ products, cartItems }) => {
         renderItem={({ item }) => (
           <ProductCardView product={item} cartItems={cartItems} />
         )}
+        keyExtractor={(item) => item._id.toString()}
         horizontal
         contentContainerStyle={{ columnGap: SIZES.medium }}
       />

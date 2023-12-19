@@ -64,7 +64,7 @@ const ProductDetails = ({ navigation, route }) => {
             })}
             <Text style={styles.ratingText}>
               {' '}
-              ({product.ratings.toFixed(1)})
+              ({product.ratings ? product.ratings.toFixed(1) : 0})
             </Text>
           </View>
           <View style={styles.rating}>
